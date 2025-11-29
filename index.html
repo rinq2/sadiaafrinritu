@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jahid Hassan Rinkq | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio of Jahid Hassan Rinkq - Web Developer & Creative Coder.">
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --bg-card: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-soft: rgba(148, 163, 184, 0.3);
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.8));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #6366f1);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
+    }
+
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 0.2rem;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #38bdf8, #6366f1);
+      transition: width var(--transition-fast);
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+      padding-top: 3.75rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.95));
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-badge span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 2.9rem);
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #6366f1);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #38bdf8, #6366f1);
+      color: #020617;
+      box-shadow: 0 15px 35px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: #38bdf8;
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item span.label {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      margin-bottom: 0.25rem;
+      color: #6b7280;
+    }
+
+    .hero-meta-item strong {
+      font-size: 0.95rem;
+    }
+
+    /* Hero right (profile) */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.98));
+      border-radius: 28px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.35), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .profile-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .profile-name {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .profile-role {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 30px;
+      border: 2px solid rgba(248, 250, 252, 0.7);
+      background: linear-gradient(145deg, #020617, #111827);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 24px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .profile-avatar span {
+      background: linear-gradient(to bottom right, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .profile-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.8rem;
+    }
+
+    .chip {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #38bdf8;
+    }
+
+    .profile-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    .status-pill {
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.75);
+      background: rgba(22, 163, 74, 0.12);
+      color: #bbf7d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Section title */
+    .section-header {
+      margin-bottom: 2.2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    .section-title span {
+      color: #38bdf8;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-top: 0.5rem;
+    }
+
+    /* Cards */
+    .card {
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.99));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .about-highlight {
+      color: #e5e7eb;
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(148, 163, 184, 0.5);
+      padding-left: 1.1rem;
+      margin-top: 0.8rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 0.9rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.2rem;
+      top: 0.25rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+    }
+
+    .timeline-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.05rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .skill-tag {
+      font-size: 0.76rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .skill-level-bar {
+      margin-top: 0.5rem;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(30, 41, 59, 0.9);
+      overflow: hidden;
+    }
+
+    .skill-level-fill {
+      height: 100%;
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      width: var(--level, 70%);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    .project-links a {
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: #38bdf8;
+      margin-right: 0.6rem;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-info-item {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-info-item strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .social-links a {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .social-links a:hover {
+      border-color: #38bdf8;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #e5e7eb;
+      font-size: 0.8rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.6rem 0.8rem;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+      transform: translateY(-1px);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .form-textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.1rem 0 1.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.7rem;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 3.7rem 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .profile-card {
+        border-radius: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-content">
+      <div class="logo">
+        <div class="logo-circle"></div>
+        <div class="logo-text">Jahid Hassan Rinkq</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Available for freelance & remote work
+        </div>
+        <h1 class="hero-title">
+          হাই, আমি <span>Jahid Hassan Rinkq</span><br>
+          একজন ক্রিয়েটিভ Web Developer.
+        </h1>
+        <p class="hero-subtitle">
+          আমি ইউনিক প্রজেক্ট যেমন <strong>personal portfolio</strong>, 
+          <strong>hacker terminal</strong>, <strong>virtual smartphone</strong>, 
+          <strong>AI chatbot UI</strong> এর মতো ইন্টারেস্টিং ওয়েব এক্সপেরিয়েন্স তৈরি করতে ভালোবাসি।
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Hire Jahid</a>
+          <a href="#projects" class="btn-ghost">View My Projects</a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="label">Experience</span>
+            <strong>2+ Years</strong>
+          </div>
+          <div class="hero-meta-item">
+            <span class="label">Name</span>
+            <strong>Jahid Hassan Rinkq</strong>
+          </div>
+          <div class="hero-meta-item">
+            <span class="label">Specialty</span>
+            <strong>Creative UI & Web Apps</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero right profile card -->
+      <div class="hero-right">
+        <div class="profile-card">
+          <div class="profile-tag">PORTFOLIO • 2025</div>
+          <div class="profile-name">Jahid Hassan Rinkq</div>
+          <div class="profile-role">Web Developer & Creative Coder</div>
+
+          <div class="profile-avatar">
+            <span>JH</span>
+          </div>
+
+          <div class="profile-meta-grid">
+            <div>
+              <div class="timeline-meta">Primary Focus</div>
+              <div class="timeline-title">Modern UI Projects</div>
+            </div>
+            <div>
+              <div class="timeline-meta">Signature</div>
+              <div class="timeline-title">Hacker & Futuristic UI</div>
+            </div>
+          </div>
+
+          <div>
+            <span class="chip">
+              <span class="chip-dot"></span>
+              Experimental Interfaces
+            </span>
+            <span class="chip">
+              <span class="chip-dot"></span>
+              Clean & Modern Design
+            </span>
+          </div>
+
+          <div class="profile-footer">
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              Open to work
+            </div>
+            <div>Last updated: 2025</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-header">
+        <div class="section-eyebrow">ABOUT</div>
+        <h2 class="section-title">আমার সম্পর্কে <span>কিছু কথা</span></h2>
+        <p class="section-subtitle">
+          আমি Jahid, যিনি একটু আলাদা ধরনের, ক্রিয়েটিভ ও ইন্টারঅ্যাকটিভ প্রজেক্ট বানাতে পছন্দ করি।
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="card">
+          <p class="about-text">
+            আমি <span class="about-highlight">Jahid Hassan Rinkq</span>, একজন 
+            <span class="about-highlight">Web Developer</span> যিনি শুধু সাধারণ ওয়েবসাইট না,
+            বরং এক্সপেরিমেন্টাল জিনিস যেমন <span class="about-highlight">secret love letter</span>,
+            <span class="about-highlight">hacker terminal</span>, <span class="about-highlight">virtual smartphone</span> 
+            আর <span class="about-highlight">AI chatbot UI</span> এর মতো প্রজেক্ট বানিয়ে থাকি।
+          </p>
+          <br>
+          <p class="about-text">
+            আমার লক্ষ্য হচ্ছে ইউজারকে এমন একটা ফিল দেওয়া, যেন তারা শুধু একটা ওয়েবসাইট না,
+   
